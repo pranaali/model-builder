@@ -1,6 +1,6 @@
 {
   "name": "@pranaali/model-builder",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dynamic Model Builder",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
@@ -39,17 +39,5 @@
   },
   "peerDependencies": {
     "mongoose": "^6.7.4"
-  },
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.mjs"
-      },
-      "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
-      }
-    }
   }
 }
