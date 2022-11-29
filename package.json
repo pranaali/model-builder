@@ -4,6 +4,11 @@
   "description": "Dynamic Model Builder",
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
+  "keywords": [
+    "data model",
+    "model builder",
+    "dynamic model"
+  ],
   "files:": [
     "lib/**/*"
   ],
