@@ -4,10 +4,32 @@
   "description": "Dynamic Model Builder",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    },
+    "./models": {
+      "import": "./dist/esm/models.js",
+      "require": "./dist/cjs/models.js",
+      "types": "./dist/esm/models.d.ts"
+    },
+    "./types": {
+      "import": "./dist/esm/types.js",
+      "require": "./dist/cjs/types.js",
+      "types": "./dist/esm/types.d.ts"
+    },
+    "./defs": {
+      "import": "./dist/esm/defs.js",
+      "require": "./dist/cjs/defs.js",
+      "types": "./dist/esm/defs.d.ts"
+    }
+  },
   "keywords": [
     "data model",
     "model builder",
@@ -18,14 +40,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "yarn clean && yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -p config/tsconfig.cjs.json",
+    "build:esm": "tsc -p config/tsconfig.esm.json",
     "clean": "rm -rf dist/*",
-    "build:esm": "tsc -p ./tsconfig.json",
-    "build:cjs": "tsc -p ./tsconfig.esm.json",
-    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "prepack": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@skypack/package-check": "^0.2.2",
     "@types/lodash": "^4.14.190",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
