@@ -1,11 +1,11 @@
-export interface IModel {
+export type IModel = {
   title: string;
-}
+};
 
-export interface IDynamicModel {
+export type IDynamicModel = {
   name: string;
   title: string;
-}
+};
 
 export type DynamicModelFieldType =
   | 'text'
@@ -19,7 +19,7 @@ export type DynamicModelFieldType =
   | 'json'
   | 'reference';
 
-export interface IModelField {
+export type IModelField = {
   title: string;
   description?: string;
   fieldType: DynamicModelFieldType;
@@ -32,9 +32,9 @@ export interface IModelField {
   min: number | string;
   max: number | string;
   referencedModel?: string;
-}
+};
 
-export interface IDynamicModelField {
+export type IDynamicModelField = {
   model: any;
   title: string;
   name: string;
@@ -49,4 +49,4 @@ export interface IDynamicModelField {
   min: number | string;
   max: number | string;
   referencedModel?: string;
-}
+};

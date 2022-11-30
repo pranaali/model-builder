@@ -1,11 +1,9 @@
 import _ from 'lodash';
 import { Schema, connect, model, SchemaOptions, QueryOptions } from 'mongoose';
 
-import DynamicModel from './models/dynamic-model.model';
-import DynamicModelField from './models/dynamic-model-field.model';
-import { IDynamicModelField, IModel, IModelField } from './interfaces/model';
-
-import { getMongoDBFieldTypes } from './lib/mongo/types';
+import { IDynamicModelField, IModel, IModelField } from './interfaces';
+import { DynamicModel, DynamicModelField } from './models';
+import { getMongoDBFieldTypes } from './types';
 
 const fieldTypes = getMongoDBFieldTypes();
 

@@ -1,24 +1,27 @@
 {
   "name": "@pranaali/model-builder",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Dynamic Model Builder",
-  "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "data model",
     "model builder",
     "dynamic model"
-  ],
-  "files:": [
-    "lib/**/*"
   ],
   "repository": "git@github.com:pranaali/model-builder.git",
   "author": "Bhawani Shankar Bharti <bhawanishiv@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "clean": "rm -rf ./lib",
-    "build": "yarn clean && yarn tsc -p .",
+    "clean": "rm -rf dist/*",
+    "build:esm": "tsc -p ./tsconfig.json",
+    "build:cjs": "tsc -p ./tsconfig.esm.json",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "prepack": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

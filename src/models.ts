@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-import { IDynamicModelField } from '../interfaces/model';
+import { IDynamicModelField, IDynamicModel } from './interfaces';
 
 const dynamicModelFieldSchema = new Schema<IDynamicModelField>(
   {
@@ -52,7 +52,27 @@ const dynamicModelFieldSchema = new Schema<IDynamicModelField>(
   { timestamps: true }
 );
 
-export default model<IDynamicModelField>(
+export const DynamicModelField = model<IDynamicModelField>(
   'DynamicModelField',
   dynamicModelFieldSchema
+);
+
+const dynamicModelSchema = new Schema<IDynamicModel>(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+export const DynamicModel = model<IDynamicModel>(
+  'DynamicModel',
+  dynamicModelSchema
 );
