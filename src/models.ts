@@ -30,6 +30,9 @@ const dynamicModelFieldSchema = new Schema<IDynamicModelField>(
     isPrivate: {
       type: Boolean,
     },
+    isRequired: {
+      type: Boolean,
+    },
     isSortable: {
       type: Boolean,
     },

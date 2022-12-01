@@ -30,6 +30,11 @@ export const getFieldAttributeOptions = () => {
       inputType: 'Boolean',
     },
     {
+      name: 'isPrivate',
+      title: 'Required',
+      inputType: 'Boolean',
+    },
+    {
       name: 'isSortable',
       title: 'Sortable',
       inputType: 'Boolean',
