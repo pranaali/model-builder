@@ -108,8 +108,10 @@ export const getDynamicModel = async <TModel = any>(
     fieldSchemaFormatted[field.name] = getFieldDefinitions(field);
   }
 
+  const modelName = `Dynamic_${_.capitalize(name)}`;
+
   return model<TModel>(
-    _.capitalize(name),
+    modelName,
     new Schema<TModel>(fieldSchemaFormatted, { timestamps: true, ...options })
   );
 };

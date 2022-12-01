@@ -28,25 +28,21 @@ export const getFieldAttributeOptions = () => {
       name: 'isRequired',
       title: 'Required',
       inputType: 'Boolean',
-      values: [true, false],
     },
     {
       name: 'isSortable',
       title: 'Sortable',
       inputType: 'Boolean',
-      values: [true, false],
     },
     {
       name: 'isSearchable',
       title: 'Searchable',
       inputType: 'Boolean',
-      values: [true, false],
     },
     {
       name: 'isUnique',
       title: 'Unique',
       inputType: 'Boolean',
-      values: [true, false],
     },
     {
       name: 'min',
@@ -62,6 +58,11 @@ export const getFieldAttributeOptions = () => {
       name: 'defaultValue',
       title: 'Default value',
       inputType: 'Inherit',
+    },
+    {
+      name: 'hasManyTypeRef',
+      title: 'Has Many Type Reference',
+      inputType: 'Boolean',
     },
   ];
   return fieldAttributes;
