@@ -23,11 +23,12 @@ const getFieldDefinitions = (field: IDynamicModelField) => {
   if (typeof field.defaultValue !== 'undefined') {
     defs.defaultValue = field.defaultValue;
   }
+
   if (field.fieldType === 'reference' && field.referencedModel) {
     defs.ref = field.referencedModel;
   }
 
-  return defs;
+  return field.multiple ? [defs] : defs;
 };
 
 export const createModel = async (model: IModel) => {

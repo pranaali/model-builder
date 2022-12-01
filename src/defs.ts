@@ -60,14 +60,14 @@ export const getFieldAttributeOptions = () => {
       inputType: 'Inherit',
     },
     {
+      name: 'multiple',
+      title: 'Multiple',
+      inputType: 'Boolean',
+    },
+    {
       name: 'referencedModel',
       title: 'Referenced Model',
       inputType: 'String',
-    },
-    {
-      name: 'hasManyTypeRef',
-      title: 'Has Many Type Reference',
-      inputType: 'Boolean',
     },
   ];
   return fieldAttributes;

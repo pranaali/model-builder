@@ -32,7 +32,7 @@ export type IModelField = {
   min: number | string;
   max: number | string;
   referencedModel?: string;
-  hasManyTypeRef?: boolean;
+  multiple?: boolean;
 };
 
 export type IDynamicModelField = {
@@ -50,5 +50,5 @@ export type IDynamicModelField = {
   min: number | string;
   max: number | string;
   referencedModel?: string;
-  hasManyTypeRef?: boolean;
+  multiple?: boolean;
 };

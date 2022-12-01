@@ -48,7 +48,7 @@ const dynamicModelFieldSchema = new Schema<IDynamicModelField>(
     referencedModel: {
       type: String,
     },
-    hasManyTypeRef: {
+    multiple: {
       type: Boolean,
     },
   },
