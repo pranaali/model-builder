@@ -60,6 +60,11 @@ export const getFieldAttributeOptions = () => {
       inputType: 'Inherit',
     },
     {
+      name: 'referencedModel',
+      title: 'Referenced Model',
+      inputType: 'String',
+    },
+    {
       name: 'hasManyTypeRef',
       title: 'Has Many Type Reference',
       inputType: 'Boolean',
