@@ -38,7 +38,7 @@ export const getFieldAttributeOptions = () => {
     },
     {
       name: 'isSearchable',
-      title: 'Required',
+      title: 'Searchable',
       inputType: 'Boolean',
       values: [true, false],
     },
@@ -51,17 +51,17 @@ export const getFieldAttributeOptions = () => {
     {
       name: 'min',
       title: 'Min value',
-      inputType: 'Dynamic',
+      inputType: 'Inherit',
     },
     {
       name: 'max',
       title: 'Max value',
-      inputType: 'Dynamic',
+      inputType: 'Inherit',
     },
     {
       name: 'defaultValue',
       title: 'Default value',
-      inputType: 'Dynamic',
+      inputType: 'Inherit',
     },
   ];
   return fieldAttributes;
