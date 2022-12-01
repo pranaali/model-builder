@@ -1,5 +1,13 @@
 import _ from 'lodash';
-import { Schema, connect, model, SchemaOptions, QueryOptions } from 'mongoose';
+import {
+  Schema,
+  connect,
+  model,
+  SchemaOptions,
+  FilterQuery,
+  UpdateQuery,
+  QueryOptions,
+} from 'mongoose';
 
 import { IDynamicModelField, IModel, IModelField } from './interfaces';
 import { DynamicModel, DynamicModelField } from './models';
@@ -54,16 +62,19 @@ export const addField = (modelId: string, field: IModelField) => {
 };
 
 export const updateField = (
-  modelId: string,
-  field: IModelField,
-  options?: QueryOptions
+  filter: FilterQuery<IDynamicModelField>,
+  update: UpdateQuery<IDynamicModelField>,
+  options?: QueryOptions<IDynamicModelField>
 ) => {
-  const formatField: IDynamicModelField = {
-    ...field,
-    name: _.camelCase(field.title),
-    model: modelId,
-  };
-  return DynamicModelField.findOneAndUpdate(formatField, options).exec();
+  return DynamicModelField.findOneAndUpdate(filter, update, options).exec();
+};
+
+export const updateFieldByFieldId = (
+  id: any,
+  update: UpdateQuery<IDynamicModelField>,
+  options?: QueryOptions<IDynamicModelField>
+) => {
+  return DynamicModelField.findByIdAndUpdate(id, update, options).exec();
 };
 
 export const removeFieldById = (fieldId: string) => {
