@@ -31,7 +31,7 @@ export const getFieldAttributeOptions = () => {
     },
     {
       name: 'isPrivate',
-      title: 'Required',
+      title: 'Private',
       inputType: 'Boolean',
     },
     {
