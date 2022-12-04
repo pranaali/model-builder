@@ -95,32 +95,44 @@ export const saveFields = (modelId: string, fields: IModelField[]) => {
   return DynamicModelField.create(formattedFields);
 };
 
-const getModel = (name: string) => {
-  return DynamicModel.findOne({ name }).exec();
+const getModel = async (name: string | object) => {
+  let params: { [key: string]: any } = {};
+  if (typeof name === 'string') {
+    params = { name };
+  } else {
+    params = name;
+  }
+  const result = await DynamicModel.findOne(params).exec();
+  if (!result)
+    throw new Error(`Model not found with parameter : ${JSON.stringify(name)}`);
+  return result;
 };
 
-export const getModelFields = async (name: string) => {
-  const model = await getModel(name);
-  if (!model) throw new Error(`Model ${name} was not found.`);
-
-  const modelId = model.id;
-
-  return DynamicModelField.find({ model: modelId }).exec();
+export const getModelFields = async (model: string | object) => {
+  let params: { [key: string]: any } = {};
+  if (typeof model === 'string') {
+    params = { model };
+  } else {
+    params = model;
+  }
+  return DynamicModelField.find(params).exec();
 };
 
 export const getDynamicModel = async <TModel = any>(
-  name: string,
+  modelParams: string | object,
   fields?: IDynamicModelField[],
   options?: SchemaOptions
 ) => {
-  const dynamicFields = fields || (await getModelFields(name));
+  const modelData = await getModel(modelParams);
+  const dynamicFields =
+    fields || (await getModelFields({ model: modelData?._id.toString() }));
   const fieldSchemaFormatted: { [key: string]: any } = {};
 
   for (const field of dynamicFields) {
     fieldSchemaFormatted[field.name] = getFieldDefinitions(field);
   }
 
-  const modelName = `Dynamic_${_.capitalize(name)}`;
+  const modelName = `Dynamic_${_.capitalize(modelData.name)}`;
 
   return model<TModel>(
     modelName,
